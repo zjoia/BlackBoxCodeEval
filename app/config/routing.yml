@@ -1,0 +1,18 @@
+evolve_hermes_employee:
+    resource: "@EvolveHermesEmployeeBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+evolve_hermes_customer:
+    resource: "@EvolveHermesCustomerBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+evolve_hermes_user:
+    resource: "@EvolveHermesUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
