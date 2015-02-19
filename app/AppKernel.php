@@ -17,9 +17,6 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
-            new Evolve\Hermes\UserBundle\EvolveHermesUserBundle(),
-            new Evolve\Hermes\CustomerBundle\EvolveHermesCustomerBundle(),
-            new Evolve\Hermes\EmployeeBundle\EvolveHermesEmployeeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
