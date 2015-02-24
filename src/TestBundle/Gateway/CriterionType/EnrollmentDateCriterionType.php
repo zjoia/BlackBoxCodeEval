@@ -19,7 +19,15 @@ class EnrollmentDateCriterionType implements CriterionTypeInterface
         $this->mathService = $mathService;
     }
 
-    /** @inheritdoc */
+    /**
+     * Evaluate the createdAt field of the Member associated with this
+     * Transaction against the GatewayCriterion value and Operator
+     *
+     * @param GatewayCriterion $gatewayCriterion
+     * @param Transaction $transaction
+     * @uses MathService::compare
+     * @return boolean
+     */
     public function evaluate(GatewayCriterion $gatewayCriterion, Transaction $transaction)
     {
 

@@ -24,7 +24,16 @@ class TransactionPeriodTotalsCriterionType implements CriterionTypeInterface
         $this->transactionRepository = $transactionRepository;
     }
 
-    /** @inheritdoc */
+    /**
+     * Evaluate the total of all Transactions for a Gateway in a PeriodType that are both
+     * associated to GatewayCriterion against the GatewayCriterion value and Operator
+     *
+     * @param GatewayCriterion $gatewayCriterion
+     * @param Transaction $transaction
+     * @uses TransactionRepository::getTotalsByPeriodType
+     * @uses MathService::compare
+     * @return boolean
+     */
     public function evaluate(GatewayCriterion $gatewayCriterion, Transaction $transaction)
     {
 
