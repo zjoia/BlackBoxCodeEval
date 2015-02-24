@@ -12,19 +12,22 @@ What's inside?
 
 This repository contains all the resources necessary for you to fulfill your two part evaluation:
 
-* Write code to make the existing unit tests located in TestBundle/Tests/Gateway pass.
-  There are notes in the code indicating what the methods should do.
+* Write code to make two out of the five existing unit tests located in TestBundle/Tests/Gateway/CriterionType pass.
+  Please see method descriptions for further instruction on the intended use of this code.
 
-* Create unit tests for the code stubs located in TestBundle/Adjustment/* based on the UML diagram
+* Optionally create unit tests for the code stubs located in TestBundle/Adjustment based on the UML diagram
   that should have been provided to you in association with this assignment. You are not required
-  to get these tests to pass, only to write them. In fact the unit test should run and fail or error but not fatal.
+  to get these tests to pass, only to write them. They should run and fail or error but not fatal.
+
+Don't get too hung up on the second assignment, Black Box Code needs developers of all levels, and if this
+task feels too daunting then feel free to skip it.
 
 How do I begin?
 -------------
 
 * Create a branch off the main repository named after yourself.
 * Complete the assignments laid out above.
-* Commit your work to your branch within 4 hours of receiving this evaluation.
+* This is a timed evaluation, your commit time will be noted
 * DO NOT commit to master.
 
 What do I do if I have questions?
