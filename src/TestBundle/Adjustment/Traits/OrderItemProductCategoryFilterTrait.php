@@ -10,6 +10,10 @@ trait OrderItemProductCategoryFilterTrait
     /** @var ProductCategoryStructureRepository */
     private $productCategoryStructureRepository;
 
+    /**
+     * @param $categoryName
+     * @param Collection $orderItems
+     */
     public function getOrderItemsByCategoryName($categoryName, Collection $orderItems)
     {
 

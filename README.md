@@ -23,7 +23,7 @@ Don't get too hung up on the second assignment, Black Box Code needs developers 
 task feels too daunting then feel free to skip it.
 
 How do I begin?
--------------
+---------------
 
 * Create a branch off the main repository named after yourself.
 * Complete the assignments laid out above.

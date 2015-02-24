@@ -34,6 +34,7 @@ class ProductCategoryOrderItemCurrencyActionType implements ActionTypeInterface
         $this->adjustmentResultRepository         = $adjustmentResultRepository;
     }
 
+    /** {@inheritdoc} */
     public function apply(AdjustmentRuleAction $adjustmentRuleAction, Order $order)
     {
 
