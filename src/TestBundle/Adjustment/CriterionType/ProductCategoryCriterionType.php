@@ -21,9 +21,15 @@ class ProductCategoryCriterionType implements CriterionTypeInterface
         $this->logger = $logger;
     }
 
-    /** {@inheritdoc} */
+    /**
+     * Evaluate if this order meets this AdjustmentRuleCriterion
+     *
+     * @param AdjustmentRuleCriterion $adjustmentRuleCriterion
+     * @param Order $order
+     * @return boolean
+     */
     public function evaluate(AdjustmentRuleCriterion $adjustmentRuleCriterion, Order $order)
     {
-
+        return count($this->getOrderItemsByCategoryName($adjustmentRuleCriterion->getProductCategory(), $order->getOrderItems())) > 0;
     }
 }

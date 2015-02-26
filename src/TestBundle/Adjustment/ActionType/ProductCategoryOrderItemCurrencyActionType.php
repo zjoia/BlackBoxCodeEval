@@ -2,6 +2,8 @@
 
 namespace TestBundle\Adjustment\ActionType;
 
+use TestBundle\Entity\AdjustmentResult;
+use TestBundle\Entity\AdjustmentResultType;
 use TestBundle\Service\TypeService;
 use TestBundle\Entity\AdjustmentRuleAction;
 use TestBundle\Entity\Order;
@@ -37,6 +39,20 @@ class ProductCategoryOrderItemCurrencyActionType implements ActionTypeInterface
     /** {@inheritdoc} */
     public function apply(AdjustmentRuleAction $adjustmentRuleAction, Order $order)
     {
+        $orderItems = $this->getOrderItemsByCategoryName($adjustmentRuleAction->getProductCategory(), $order->getOrderItems());
 
+        if (count($orderItems) > 0) {
+            $adjustment = new AdjustmentResult();
+            $adjustment->setValue($adjustmentRuleAction->getAdjustmentRuleActionValue()->getValue());
+            $adjustment->setOperatorType($adjustmentRuleAction->getAdjustmentRuleActionOperator()->getOperatorType());
+            $adjustment->setAdjustmentResultType(new AdjustmentResultType(AdjustmentResultType::ORDER_ITEM_CURRENCY));
+
+            foreach ($orderItems as $orderItem) {
+                $adjustment->addOrderItem($orderItem);
+            }
+
+            $this->adjustmentResultRepository->persist($adjustment);
+            $this->adjustmentResultRepository->flush();
+        }
     }
 }
