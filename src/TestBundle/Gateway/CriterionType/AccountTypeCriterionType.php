@@ -2,6 +2,7 @@
 
 namespace TestBundle\Gateway\CriterionType;
 
+use TestBundle\Entity\ContactOrder;
 use TestBundle\Entity\GatewayCriterion;
 use TestBundle\Entity\Transaction;
 
@@ -17,6 +18,14 @@ class AccountTypeCriterionType implements CriterionTypeInterface
      */
     public function evaluate(GatewayCriterion $gatewayCriterion, Transaction $transaction)
     {
+        /** @var ContactOrder $contactOrder */
+        $contactOrder = $transaction->getOrder()->getContactOrders()->first();
 
+        if ($contactOrder) {
+            $memberAccountType = $contactOrder->getContact()->getUser()->getMember()->getType();
+            return $memberAccountType == $gatewayCriterion->getAccountType();
+        }
+
+        return false;
     }
 }

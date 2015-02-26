@@ -2,6 +2,7 @@
 
 namespace TestBundle\Gateway\CriterionType;
 
+use TestBundle\Entity\ContactOrder;
 use TestBundle\Entity\GatewayCriterion;
 use TestBundle\Entity\Transaction;
 
@@ -17,6 +18,15 @@ class RegionZoneCriterionType implements CriterionTypeInterface
      */
     public function evaluate(GatewayCriterion $gatewayCriterion, Transaction $transaction)
     {
+        /** @var ContactOrder $contactOrder */
+        $contactOrder = $transaction->getOrder()->getContactOrders()->first();
 
+        if (!$contactOrder) {
+            return false;
+        }
+
+        $user = $contactOrder->getContact()->getUser();
+
+        return $gatewayCriterion->getRegionZones()->contains($user->getRegionZone());
     }
 }

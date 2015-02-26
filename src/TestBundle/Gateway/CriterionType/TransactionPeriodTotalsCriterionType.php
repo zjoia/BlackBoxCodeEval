@@ -2,6 +2,7 @@
 
 namespace TestBundle\Gateway\CriterionType;
 
+use TestBundle\Entity\TransactionType;
 use TestBundle\Service\MathService;
 use TestBundle\Entity\GatewayCriterion;
 use TestBundle\Entity\Transaction;
@@ -36,6 +37,12 @@ class TransactionPeriodTotalsCriterionType implements CriterionTypeInterface
      */
     public function evaluate(GatewayCriterion $gatewayCriterion, Transaction $transaction)
     {
+
+        return $this->mathService->compare(
+            $this->transactionRepository->getTotalsByPeriodType($gatewayCriterion->getPeriodType()),
+            $gatewayCriterion->getGatewayCriterionOperator()->getOperatorType()->getName(),
+            $gatewayCriterion->getGatewayCriterionValue()->getValue()
+        );
 
     }
 }

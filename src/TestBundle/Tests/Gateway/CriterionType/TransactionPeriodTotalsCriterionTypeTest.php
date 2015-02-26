@@ -3,6 +3,7 @@
 namespace TestBundle\Tests\Gateway\CriterionType;
 
 use PHPUnit_Framework_MockObject_MockObject;
+use PHPUnit_Framework_MockObject_Stub_Return;
 use TestBundle\Gateway\CriterionType\TransactionPeriodTotalsCriterionType;
 use TestBundle\Entity\Gateway;
 use TestBundle\Entity\GatewayCriterion;
@@ -62,7 +63,10 @@ class TransactionPeriodTotalsCriterionTypeTest extends BaseTestCase
         $this->mTransactionRepository
             ->expects($this->once())
             ->method('getTotalsByPeriodType')
-            ->willReturn(0.00);
+            ->will(new PHPUnit_Framework_MockObject_Stub_Return(
+                0.00
+            ));
+//            ->willReturn(0.00);
 
         $this->assertTrue($this->criterionType->evaluate($this->gatewayCriterion, $this->transaction));
     }
@@ -73,7 +77,10 @@ class TransactionPeriodTotalsCriterionTypeTest extends BaseTestCase
         $this->mTransactionRepository
             ->expects($this->once())
             ->method('getTotalsByPeriodType')
-            ->willReturn(124.00);
+            ->will(new PHPUnit_Framework_MockObject_Stub_Return(
+                124.00
+            ));
+//            ->willReturn(124.00);
 
         $this->assertFalse($this->criterionType->evaluate($this->gatewayCriterion, $this->transaction));
     }
